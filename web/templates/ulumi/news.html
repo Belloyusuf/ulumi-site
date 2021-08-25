@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %} news {% endblock title %}
+
+{% block content %}
+   
+    <div class="container">
+        <div class="jumbotron">
+            <h2>Full News </h2>
+            <p>Everything about ulumi is in here</p>
+        </div>
+        {% for news in news %}
+            <div class="row">
+                <div class="col-md-8">
+                    <h2 class="heading-color">{{ news.title | capfirst}}</h2>
+                    <p class="lead">{{ news.body | truncatewords:100 | linebreaks | capfirst}}</p>
+                    <a href="{{ news.get_absolute_url }}">See full News</a>
+                </div>
+                
+            </div>
+        <hr>
+       {% endfor %}
+    </div>
+
+{% endblock content %}

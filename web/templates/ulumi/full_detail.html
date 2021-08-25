@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %} {{ news.title }} {% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class="jumbotron">
+            <h2>Full News</h2>
+            <p>Here is the full news</p>
+        </div>
+
+        
+            <h1>{{ news.title | capfirst}}</h1>
+            <hr>
+            <p class="admin-time" style="font-style: italic; color: gray;">Written by {{ news.author }} on {{ news.created }}</p>
+            <p>{{ news.body | linebreaks }}</p>
+        
+    </div>
+{% endblock content %}

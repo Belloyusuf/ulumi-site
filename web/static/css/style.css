@@ -1,0 +1,19 @@
+body{
+    background-color: #f1f1f1;
+}
+.heading-color{
+    color: darkblue;
+}
+.admin-time{
+    font-style: italic;
+    color: gray;
+    
+}
+#history-header{
+    margin-top: 30px;
+}
+
+.history-container{
+    margin-left: 20px;
+    margin-right: 20px;
+}

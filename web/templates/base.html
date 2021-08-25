@@ -1,0 +1,31 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="school url logo">
+
+    <title>{% block title %} {% endblock title %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css/sticky-footer.css'%}">
+    <link rel="stylesheet" href="{% static 'navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link href="{% static 'css/carousel.css'%}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <script src="{% static 'js/jquery3.6.0.js'%}"></script>
+    <script src="{% static 'js/bootstrap.js'%}"></script>
+    <!-- Custom styles for this template -->
+  </head>
+  <body>
+
+    {% include 'navbar.html'%}
+    {% block content %}
+
+    {% endblock content %}
+    {% include 'footer.html' %}
+</body>
+</html>
