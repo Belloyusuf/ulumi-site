@@ -2,17 +2,111 @@
 {% block title %} {{ news.title }} {% endblock title %}
 
 {% block content %}
-    <div class="container">
+<div class="container">
+    <!-- JUMBOTRON -->
         <div class="jumbotron">
             <h2>Full News</h2>
             <p>Here is the full news</p>
         </div>
 
-        
-            <h1>{{ news.title | capfirst}}</h1>
-            <hr>
-            <p class="admin-time" style="font-style: italic; color: gray;">Written by {{ news.author }} on {{ news.created }}</p>
+        <!-- Flash message -->
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                <p>Thanks for your message</p>
+            </div>
+        {% endfor %}
+
+        <h1>{{ news.title | capfirst}}</h1>
+        <hr>  <!-- Title divider -->
+
+    <div class="row">
+        <div class="col-sm-7">
+            <p class="admin-time" style="font-style: italic; color: gray;">Written by <b>{{ user.first_name }} {{user.last_name}}</b> on {{ news.created }}</p>
             <p>{{ news.body | linebreaks }}</p>
-        
+
+        <!-- Generating comment form if there is not -->
+        {% if new_comment %}
+            {% comment %} 
+                    Intentionally left blank 
+            {% endcomment %}
+        {% else %}
+            <!-- COMMENT FORM -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="">Comment</button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Send your message</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        {{ comment_form.name }}
+                    </div>
+                    <div class="form-group">
+                        <label >Email</label>
+                        {{ comment_form.email }}
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        {{ comment_form.message }}
+                    </div>
+                <button type="button" class="btn btn-primary btn-md btn-block">Send message</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <p><i>We are glad to see your message's</i></p>
+        </div>
+        </div>
     </div>
+    </div>
+            <!-- <div class="form-color">
+                <h2>Send your Comment </h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        {{ comment_form.name }}
+                    </div>
+                    <div class="form-group">
+                        <label >Email</label>
+                        {{ comment_form.email }}
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        {{ comment_form.message }}
+                    </div>
+                    <button class="btn btn-success btn-lg btn-block">Submit</button>
+                </form>      
+            </div> -->
+        {% endif %}         
+            </div>
+
+<!-- counting of comment  -->
+    <div class="col-md-5" id="comment">
+        {% with comments.count as total_comments %}
+            <h4 class="comment-color"> <b>{{ total_comments }}  Comment {{ total_comments|pluralize }}</b></h4> 
+        {% endwith %}
+
+<!-- list of comment and name of the user that comment -->
+        {% for comment in comments %}
+            <div class="alert alert-success" role="alert">
+                <p>Comment by <b>{{ comment.name }}</b>, on {{ comment.created }}</p>
+                <p> {{ comment.message }} </p>
+                <hr>
+            </div>
+
+            {% empty %}
+                <h3>There are no comments yet. </h3>
+                <hr>
+        {% endfor %}
+    </div>
+    </div>
+    <hr>
+</div>
 {% endblock content %}

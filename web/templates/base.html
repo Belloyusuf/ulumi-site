@@ -1,3 +1,4 @@
+{% load current_date_tags %}
 {% load static %}
 <!doctype html>
 <html lang="en">
@@ -6,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="school url logo">
+    <link rel="icon" href="../../media/a1.jpg">
 
     <title>{% block title %} {% endblock title %}</title>
 
@@ -18,14 +19,29 @@
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
     <script src="{% static 'js/jquery3.6.0.js'%}"></script>
     <script src="{% static 'js/bootstrap.js'%}"></script>
+    <script src="{% static 'js/animation.js'%}"></script>
     <!-- Custom styles for this template -->
   </head>
   <body>
 
     {% include 'navbar.html'%}
-    {% block content %}
+    <div class="container">
+      {% block content %}
 
-    {% endblock content %}
-    {% include 'footer.html' %}
+      {% endblock content %}
+  
+    </div>
+    <!-- FOOTER -->  
+    {% current_time "%Y" as year %}
+    
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted"> &COPY; {{ year }} Madarastul Ulumi Wal-Qur'an Takur Site </span>
+      </div>
+    </footer>
+
+  <!-- JS -->
+  <script src="{% static 'js/animation.js'%}"></script>
+  <script src="{% static 'js/jquery3.6.0.js'%}"></script>
 </body>
 </html>

@@ -13,7 +13,12 @@
           <a class="nav-link" href="{% url 'news_details'%}">News</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="{% url 'history'%}">History</a>
+          <a class="nav-link" href="{% url 'history'%}">History</a>
+        </li>
+        <li class="nav-item">
+          {% with comments.count as total_comments %}
+              <a class="nav-link disabled"> Comment {{ total_comments|pluralize }} {{ total_comments }} </a>
+          {% endwith %}
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Programmes</a>

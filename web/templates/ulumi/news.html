@@ -8,17 +8,21 @@
             <h2>Full News </h2>
             <p>Everything about ulumi is in here</p>
         </div>
-        {% for news in news %}
-            <div class="row">
-                <div class="col-md-8">
-                    <h2 class="heading-color">{{ news.title | capfirst}}</h2>
-                    <p class="lead">{{ news.body | truncatewords:100 | linebreaks | capfirst}}</p>
-                    <a href="{{ news.get_absolute_url }}">See full News</a>
-                </div>
-                
+        <!-- Nested container -->
+      <div class="container">
+    {% for news in news %}
+        <div class="row">
+            <div class="col-md-8" style="border-left-style:groove; border-left-color: rgb(230, 208, 169);">
+                <h2 class="heading-color">{{ news.title | capfirst}}</h2>
+                <p class="lead">{{ news.body | truncatewords:50 | linebreaks | capfirst}}</p> 
+                <p style="color: gray;"><i>Written by {{ user.first_name }} {{ user.last_name }}</i></p>
+                <a href="{{ news.get_absolute_url }}">See full News</a>
             </div>
+        </div>
         <hr>
-       {% endfor %}
+   {% endfor %}
+   <p style="padding-bottom: 2em;"></p>
+      </div>
     </div>
 
 {% endblock content %}

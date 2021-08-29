@@ -3085,7 +3085,7 @@ fieldset:disabled a.btn {
 
 .btn-block {
   display: block;
-  width: 100%;
+  width: 84%;
 }
 
 .btn-block + .btn-block {
@@ -4931,7 +4931,7 @@ tbody.collapse.show {
 }
 
 .jumbotron {
-  margin-top: 20px;
+  margin-top: 2em;
   padding: 2rem 1rem;
   margin-bottom: 2rem;
   background-color: #e9ecef;
@@ -5456,7 +5456,7 @@ button.close {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  width: 100%;
+  width: 70%;
   pointer-events: auto;
   background-color: #fff;
   background-clip: padding-box;
